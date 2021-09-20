@@ -12,7 +12,7 @@ AFRAME.registerComponent('trigger-listener',{
 
         this.el.addEventListener('triggerdown', () => {
             createBrushPoint();
-            brushPointInterval = setInterval(createBrushPoint, 100);
+            brushPointInterval = setInterval(createBrushPoint, 30);
         });
 
         const createBrushPoint = () => {
