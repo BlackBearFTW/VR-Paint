@@ -1,12 +1,20 @@
+
+// Custom component that handles the controller trigger, which will be used for activating the paint brush.
 AFRAME.registerComponent('trigger-listener',{
     init: function () {
+        const scene = document.querySelector("a-scene");
 
         this.el.addEventListener('triggerup', () => {
-            this.boxEl.setAttribute("material", "color: green");
+            // Clear interval
         });
 
         this.el.addEventListener('triggerdown', () => {
-            this.boxEl.setAttribute("material", "color: yellow");
+            const brushPoint = document.createElement("a-sphere");
+            //brushPoint.setAttribute("geometry", "primitive: sphere");
+            brushPoint.setAttribute("material", "color: blue");
+            brushPoint.setAttribute("geometry", "radius: 0.5");
+            //brushPoint.setAttribute("position", this.el.getAttribute("position"));
+            scene.appendChild(brushPoint);
         });
 
         this.boxEl = document.querySelector("#box");
