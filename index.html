@@ -1,24 +1,71 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="main.css" />
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="main.js"></script>
+    <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>
     <script src="components.js"></script>
-    <title>VR Paint</title>
-</head>
-<body>
-<a-scene>
-    <a-entity geometry="primitive: box; width: 5; height: 5" material="color:#c2c2c2;" position="10 0 -10"
-              id="box"></a-entity>
+    <script src="primitives.js"></script>
+  </head>
+  <body>
+    <!-- fog="color: white; near: 0.5; far: 170" -->
+    <a-scene>
 
-<!--    <a-entity oculus-touch-controls="hand: left"></a-entity>-->
-    <a-entity oculus-touch-controls="hand: right" laser-controls raycaster="lineColor: #A1D8F7;" trigger-listener></a-entity>
-    <a-sky color="#ECECEC"></a-sky>
-</a-scene>
-</body>
-
+      <a-entity
+              position="0 0.8 -1"
+              htmlembed
+              class="collidable"
+              id="colorpicker-ui"
+              geometry="primitive: plane; width: 1; height: 0.5"
+              material="side: back; color: #262626"
+              rotation="-20 0 0"
+              scale="0.5 0.5"
+      >
+          <div id="colorpicker-container">
+              <div id="swatches-panel">
+                  <div style="background: #FB0845" id="active-swatch">
+                    <svg fill="white" style="margin: 5px" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <div style="background: #F87627"></div>
+                  <div style="background: #EEA90E"></div>
+                  <div style="background: #0c0c0c"></div>
+                  <div class="tool" id="close">
+                      <svg fill="white" width="25px" height="25px" viewBox="0 0 20 20">
+                          <path
+                                  fill-rule="evenodd"
+                                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                  clip-rule="evenodd"
+                          ></path>
+                      </svg>
+                  </div>
+  
+                  <div style="background: #00893D"></div>
+                  <div style="background: #0173D8"></div>
+                  <div style="background: #9933CB"></div>
+                  <div style="background: #716F71"></div>
+                  <div class="tool" id="delete">
+                      <svg fill="red" width="25px" height="25px" viewBox="0 0 20 20">
+                          <path
+                                  fill-rule="evenodd"
+                                  d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                  clip-rule="evenodd"
+                          ></path>
+                      </svg>
+                  </div>
+              </div>
+              <div id="delete-confirmation-panel" class="hide-panel">
+                  <div id="dialogue-text">Would you like to reset this scene?</div>
+                  <button id="delete-button">Reset</button>
+                  <button id="cancel-button">Cancel</button>
+              </div>
+          </div>
+      </a-entity>
+  
+      <!-- Other -->
+      <a-sky color="#ECECEC"></a-sky>
+      <a-grid></a-grid>
+      <a-entity oculus-touch-controls="hand: right" laser-controls raycaster="lineColor: #A1D8F7; objects: .collidable;" trigger-listener></a-entity>
+  </a-scene>
+    <script src="main.js"></script>
+  </body>
 </html>

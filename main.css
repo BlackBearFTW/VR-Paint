@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+  #colorpicker-container {
+    background-color: #262626;
+    padding: 20px;
+    border-radius: 5px;
+    font-family: "Roboto", sans-serif;
+  }
+
+  .hide-panel {
+    display: none !important;
+  }
+
+  /* Swatches */
+  #colorpicker-container > #swatches-panel {
+    display: grid;
+    grid-gap: 12px;
+    grid-template-columns: repeat(5, 1fr);
+    width: 260px;
+  }
+
+  #colorpicker-container > #swatches-panel > div {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+  }
+
+  #colorpicker-container > #swatches-panel > div:hover:not(.tool) {
+    opacity: 0.9;
+  }
+
+  #colorpicker-container > #swatches-panel > .tool {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #colorpicker-container > #swatches-panel > .tool:hover {
+    background-color: #2C2B2C;
+  }
+
+  /* Delete Confirmation */
+  #colorpicker-container > #delete-confirmation-panel {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 12px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "dialogue-text dialogue-text"
+      "delete-button cancel-button";
+    color: white;
+    justify-items: center;
+    align-items: center;
+    width: 260px;
+  }
+
+  #dialogue-text {
+    grid-area: dialogue-text;
+  }
+
+  #delete-button,
+  #cancel-button {
+    padding: 12px 35px;
+    border: none;
+    border-radius: 5px;
+  }
+
+  #delete-button {
+    grid-area: delete-button;
+    background: red;
+    color: white;
+    font-weight: bold;
+  }
+
+  #cancel-button {
+    grid-area: cancel-button;
+  }
