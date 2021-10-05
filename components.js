@@ -41,6 +41,7 @@ AFRAME.registerComponent('trigger-listener', {
             //brushPoint.setAttribute("geometry", "height: 0.05; width: 0.05");
             brushPoint.setAttribute("geometry", "radius: 0.05");
             brushPoint.setAttribute("position", controllerPos);
+            brushPoint.setAttribute("class", "brush-point");
             //brushPoint.setAttribute("rotation", controllerRotation);
             scene.appendChild(brushPoint);
 

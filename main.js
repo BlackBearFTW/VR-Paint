@@ -7,8 +7,6 @@ window.addEventListener('enter-vr', e => {
     box.setAttribute("material", "color: blue");
 });
 
-
-
 const colorPickerUI = document.querySelector("#colorpicker-ui");
 const cpSwatchBtns = document.querySelectorAll(
     "#colorpicker-container > #swatches-panel > div:not(.tool)"
@@ -20,6 +18,14 @@ const cpCloseBtn = document.querySelector(
 
 const cpDeleteBtn = document.querySelector(
     "#colorpicker-container > #swatches-panel > div.tool#delete"
+);
+
+const cpResetBtn = document.querySelector(
+    "#colorpicker-container > #delete-confirmation-panel > #reset-button"
+);
+
+const cpCancelBtn = document.querySelector(
+    "#colorpicker-container > #delete-confirmation-panel > #cancel-button"
 );
 
 cpSwatchBtns.forEach(swatchBtn => {
@@ -46,6 +52,26 @@ cpDeleteBtn.addEventListener("click", event => {
         .classList.add("hide-panel");
     document
         .querySelector("#colorpicker-container > #delete-confirmation-panel")
+        .classList.remove("hide-panel");
+});
+
+cpCancelBtn.addEventListener("click", event => {
+    document
+        .querySelector("#colorpicker-container > #delete-confirmation-panel")
+        .classList.add("hide-panel");
+    document
+        .querySelector("#colorpicker-container > #swatches-panel")
+        .classList.remove("hide-panel");
+});
+
+cpResetBtn.addEventListener("click", event => {
+    document.querySelectorAll(".brush-point").forEach(element => element.remove());
+
+    document
+        .querySelector("#colorpicker-container > #delete-confirmation-panel")
+        .classList.add("hide-panel");
+    document
+        .querySelector("#colorpicker-container > #swatches-panel")
         .classList.remove("hide-panel");
 });
 
