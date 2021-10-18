@@ -1,13 +1,10 @@
-const box = document.querySelector("#box");
+const colorPickerUI = document.querySelector("#colorpicker-ui");
 const scene = document.querySelector("a-scene");
 
 // Check if the user has a VR headset, because this application won't work without one.
-window.addEventListener('enter-vr', e => {
-    if (!AFRAME.utils.device.checkHeadsetConnected()) return;
-    box.setAttribute("material", "color: blue");
-});
+window.addEventListener('enter-vr', e => colorPickerUI.setAttribute("scale", "0.5 0.5"));
+window.addEventListener('exit-vr', e => colorPickerUI.setAttribute("scale", "0 0"));
 
-const colorPickerUI = document.querySelector("#colorpicker-ui");
 const cpSwatchBtns = document.querySelectorAll(
     "#colorpicker-container > #swatches-panel > div:not(.tool)"
 );

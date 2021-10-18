@@ -9,7 +9,16 @@
   </head>
   <body>
     <!-- fog="color: white; near: 0.5; far: 170" -->
-    <a-scene>
+    <a-scene  vr-mode-ui="enterVRButton: #vr-enter-button;">
+
+        <div id="instructions-modal" class="modal">
+            <div class="modal-content">
+                <h2>Instructions</h2>
+                <img src="instructions.png" alt="Instructions Image: Trigger: Select/Paint, B: Toggle UI">
+                <a href="#" id="vr-enter-button">Enter VR</a>
+            </div>
+        </div>
+
 
       <a-entity
               position="0 0.8 -1"
@@ -19,7 +28,7 @@
               geometry="primitive: plane; width: 1; height: 0.5"
               material="side: back; color: #262626"
               rotation="-20 0 0"
-              scale="0.5 0.5"
+              scale="0 0"
       >
           <div id="colorpicker-container">
               <div id="swatches-panel">
